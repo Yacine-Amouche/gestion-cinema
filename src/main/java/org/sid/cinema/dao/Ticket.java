@@ -1,10 +1,8 @@
 package org.sid.cinema.dao;
 
-import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -12,20 +10,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-
-public class SalleEntity {
+public class Ticket {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private int nombrePlace;
+	private String nomClien;
+	private double prix;
+	private int codePayement;
+	private boolean reserve;
 	@ManyToOne
-	private CinemaEntity cinema;
-
+	private Place place;
+	@ManyToOne
+	private Projection projection;
 }
