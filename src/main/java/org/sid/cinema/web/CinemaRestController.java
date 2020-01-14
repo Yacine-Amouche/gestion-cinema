@@ -4,9 +4,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-
-import javax.sound.midi.Patch;
 
 import org.sid.cinema.dao.FilmRepository;
 import org.sid.cinema.entity.Film;
