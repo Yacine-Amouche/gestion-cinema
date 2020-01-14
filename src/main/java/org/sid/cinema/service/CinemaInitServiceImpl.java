@@ -164,11 +164,11 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		
 		double[] durees=new double[] {1,1.5,2,2.5,3};
 		List<Catigorie> catigories =catigorieRepository.findAll();
-		Stream.of("Massinissa","Amirouche","Elghola").forEach(titreFilm->{
+		Stream.of("Massinissa","Amirouche","Elghola","ftama nsoumar").forEach(titreFilm->{
 			Film film = new Film();
 			film.setTitre(titreFilm);
 			film.setDuree(durees[new Random().nextInt(durees.length)]);
-			film.setPhoto(titreFilm.replaceAll(" ", ""));
+			film.setPhoto(titreFilm.replaceAll(" ", "")+".jpg");
 			film.setCatigorie(catigories.get(new Random().nextInt(catigories.size())));
 			filmRepository.save(film);
 		});
