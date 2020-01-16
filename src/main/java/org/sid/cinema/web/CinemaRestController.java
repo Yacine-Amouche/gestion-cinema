@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 import org.sid.cinema.dao.FilmRepository;
 import org.sid.cinema.dao.TicketRepository;
@@ -39,6 +39,7 @@ public class CinemaRestController {
 		return Files.readAllBytes(path);
 	}
 	@PostMapping("/payerTickets")
+	@Transactional
 	public List<Ticket> peyerTickets (@RequestBody TicketFrom ticketFrom)  {
 		List<Ticket> listTicket = new ArrayList<>();
 		ticketFrom.getTickets().forEach(idTicket ->{
