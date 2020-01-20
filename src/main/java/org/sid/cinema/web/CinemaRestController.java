@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 import org.sid.cinema.dao.FilmRepository;
 import org.sid.cinema.dao.TicketRepository;
@@ -15,6 +15,7 @@ import org.sid.cinema.entity.Film;
 import org.sid.cinema.entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ import lombok.Data;
 
 
 @RestController
+@CrossOrigin("*")
 public class CinemaRestController {
 	@Autowired
 	private FilmRepository filmRepository ;
@@ -39,6 +41,7 @@ public class CinemaRestController {
 		return Files.readAllBytes(path);
 	}
 	@PostMapping("/payerTickets")
+	@Transactional
 	public List<Ticket> peyerTickets (@RequestBody TicketFrom ticketFrom)  {
 		List<Ticket> listTicket = new ArrayList<>();
 		ticketFrom.getTickets().forEach(idTicket ->{
