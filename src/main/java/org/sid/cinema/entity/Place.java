@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +29,7 @@ public class Place {
 	@ManyToOne
 	private Salle salle;
 	@OneToMany(mappedBy = "place")
+    @JsonProperty(access = Access.READ_WRITE)
 	private Collection<Ticket> ticket;
 	
 }
